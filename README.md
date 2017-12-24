@@ -11,13 +11,12 @@
 3. Меню должно открываться вниз, под объектом, на который кликнули, если внизу недостаточно места, то меню должно автоматически открываться вверх, если вверху недостаточно место, то меню должно автоматически открываться влево, если слева недостаточно места то меню, должно открыться справа.
 
 
-Мои комментарии:
-Проверка:
-Перемещение пункта меню по горизонтали для проверки задаю свойству align-items : flex-end, center, flex-start;
+Мои комментарии:<br>
+Проверка:<br>
+Перемещение пункта меню по горизонтали для проверки задаю свойству align-items : flex-end, center, flex-start;<br>
 .App {
-<!-- flex-end, center, flex-start -->
     align-items: center;
-   }
+}<br>
 
 1. Количество пунктов главного меню может быть изменено в массиве меню - menuItems.
 2. Количество пунктов выпрадающего subMenu - может быть изменено в массиве меню - menuItems. Пункты subMenu могут быть разными - для разных пунктов главного меню.
@@ -26,7 +25,7 @@
 5. Ссылки href для перехода - соответствуют названиям пунктов меню.
 6. Если с пунктом меню по соседству есть пункт - то выпадающее меню будет открываться вверх/вниз.
 7. Если слева/справа нет места - subMenu открываетяс с противоположной стороны.
-   Если сверху досточно места - subMenu меню открывается по центру, если нет - в один уровень с главным пунктом меню.
+8. Если сверху досточно места - subMenu меню открывается по центру, если нет - в один уровень с главным пунктом меню.
 
 
 
@@ -58,13 +57,5 @@ Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
