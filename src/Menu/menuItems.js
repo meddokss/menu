@@ -1,36 +1,27 @@
 
 
 let productsMenu =  [
-	{label:'Product Develop'},
-	{label:'Startup Services'},
-	{label:'Software Develop'},
-	{label:'Product Design'},
-	{label:'Data Analysis'}
+	{label:'Product Develop', id: 1},
+	{label:'Startup Services', id: 2},
+	{label:'Software Develop', id: 3},
+	{label:'Product Design', id: 4},
+	{label:'Data Analysis', id: 5}
 ];
 let ourTeamMenu =  [
-	{label:'Founder'},
-	{label:'Chief Financial'},
-	{label:'Senior Vice President'},
-	{label:'Chief Creative Officer'},
-	{label:'Vice President'}
+	{label:'Founder', id: 1},
+	{label:'Chief Financial', id: 2},
+	{label:'Senior Vice President', id: 3},
+	{label:'Chief Creative Officer', id: 4},
+	{label:'Vice President', id: 5}
 ];
 
-// let ourTeamMenu =  [
-// 	{label:'F'},
-// 	{label:'C'},
-// 	{label:'S'},
-// 	{label:'C'},
-// 	{label:'V'}
-// ];
-
-
 let menu = [
-	{label:'Home' },
-	{label:'Products', secondMenu: productsMenu},
-	{label:'Portfolio'},
-	{label:'Our Team retetet', secondMenu: ourTeamMenu},
-	{label: 'Contacts'},
-	{label:'About'}
+	// {label:'Home', id: 1 },
+	{label:'Products',id: 2,  secondMenu: productsMenu},
+	// {label:'Portfolio', id: 3},
+	// {label:'Our Team', id: 4, secondMenu: ourTeamMenu},
+	// {label: 'Contacts', id: 5},
+	// {label:'About', id: 6}
 ];
 
 export {menu};

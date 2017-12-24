@@ -5,57 +5,50 @@ class Link extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			opened: false,
-			setStyle: {
+			subMenuStyle: {
 				top: null,
 				left: null,
 			},
-			show: 'hidden',
+			show: false,
 		};
 		
 	}
 	
 	handleClick = (e) => {
-		// console.log(this.node.offsetHeight);
 		e.preventDefault();
+		let dropDownHeight = this.node.offsetHeight;
+		let top = true;
+		let left;
 		
-		
-		
-		if (this.state.show === 'hidden') {
-			
-			let dropDownHeight = 315;
+		if (!this.state.show) {
 			let target = e.target;
-			let nextSibling = e.target.parentElement.nextSibling;
-			let prevSibling = e.target.parentElement.previousSibling;
+			let {previousSibling, nextSibling} = e.target.parentElement;
 			let coords = target.getBoundingClientRect();
 			let down = document.documentElement.clientHeight - coords.bottom;
 			let rightSide = document.documentElement.clientWidth - coords.right;
 			let leftSide = coords.left;
-			var top=true;
-			var left;
-		
 			
 			// право
-			if (rightSide < 20 && leftSide > 0) {
+			if (rightSide < 20 && leftSide > 0 && !previousSibling) {
 				// не вылезать за правую границу окна
 				left = -coords.width;
-				if(coords.top > dropDownHeight/2 ){
-					top = -dropDownHeight/2 + coords.height;
+				if (coords.top > dropDownHeight / 2) {
+					top = -dropDownHeight / 2 + coords.height;
 					console.log('ОТКРЫВАЕМ ВЛЕВО ПО СЕРЕДИНЕ ПУНКТА');
-				}else{
+				} else {
 					top = 0;
 					console.log('ОТКРЫВАЕМ ВЛЕВО КОГДА СПРАВА МАЛО МЕСТА');
 				}
 			}
 			
 			// лево
-			if (leftSide > 0 && coords.top < dropDownHeight && down < dropDownHeight && !prevSibling) {
+			if (leftSide > 0 && coords.top < dropDownHeight && down < dropDownHeight && !previousSibling) {
 				// ЕСЛИ СВЕРХУ НЕДОСТАТОЧНО МЕСТА - ОТКРЫВАЕМ ВЛЕВО
 				left = -coords.width;
-				if(coords.top > dropDownHeight/2 ){
-					top = -dropDownHeight/2 + coords.height;
+				if (coords.top > dropDownHeight / 2) {
+					top = -dropDownHeight / 2 + coords.height;
 					console.log('ОТКРЫВАЕМ ВЛЕВО ПО СЕРЕДИНЕ ПУНКТА');
-				}else{
+				} else {
 					top = 0;
 					console.log('ОТКРЫВАЕМ ВЛЕВО КОГДА СВЕРХУ МАЛО МЕСТА');
 				}
@@ -64,44 +57,34 @@ class Link extends Component {
 			if (leftSide <= 0 && down < dropDownHeight && !nextSibling) {
 				// ЕСЛИ СЛЕВА НЕДОСТАТОЧНО МЕСТА - ОТКРЫВАЕМ ВПРАВО
 				left = coords.width;
-				if(coords.top > dropDownHeight/2 ){
-					top = -dropDownHeight/2 + coords.height;
+				if (coords.top > dropDownHeight / 2) {
+					top = -dropDownHeight / 2 + coords.height;
 					console.log('ОТКРЫВАЕМ ВЛЕВО ПО СЕРЕДИНЕ ПУНКТА');
-				}else{
+				} else {
 					top = 0;
 					console.log('ОТКРЫВАЕМ ВЛЕВО КОГДА СПРАВА МАЛО МЕСТА');
 				}
 			}
 			
-			// //верх-низ
-			// if (coords.top < 0) {
-			// 	// не вылезать за верхнюю границу окна ЕСЛИ СВЕРХУ НЕДОСТАТОЧНО МЕСТА - ОТКРЫВАЕМ ВНИЗ
-			// 	top = coords.height + 17;
-			// 	console.log('ОТКРЫВАЕМ ВНИЗ');
-			// }
-			// console.log(coords.top);
-			
-			if (coords.top + coords.height > dropDownHeight && down < dropDownHeight && rightSide > 20 && top>0) {
+			if (coords.top + coords.height > dropDownHeight && down < dropDownHeight && rightSide > 20 && top > 0) {
 				top = -dropDownHeight;
 				console.log('ОТКРЫВАЕМ ВВЕРХ');
 			}
 			
-			
 			document.addEventListener('click', this.handleOutsideClick, false);
 			this.setState({
-				show: 'show',
+				show: true,
 			});
 			
 		} else {
 			this.setState({
-				show: 'hidden',
+				show: false,
 			});
 			document.removeEventListener('click', this.handleOutsideClick, false);
 		}
 		
 		this.setState({
-			opened: !this.state.opened,
-			setStyle: {
+			subMenuStyle: {
 				top: top,
 				left: left,
 			}
@@ -114,23 +97,28 @@ class Link extends Component {
 			return;
 		}
 		this.handleClick(e);
+
+	};
+	
+	getUrl = (item) => {
+		return item.toLowerCase().trim().replace(' ', '-')
 	};
 	
 	render() {
 		let {item, menu} = this.props;
-		const url = `./${item.label.toLowerCase().trim().replace(' ', '-')}`;
-		if(item.secondMenu){
-			menu = item.secondMenu.map((itemSecond)=>{
-				return <li key = {itemSecond.label + +Date.now()}><a href={`./${itemSecond.label.toLowerCase().trim().replace(' ', '-')}`}>{itemSecond.label}</a></li>
+		if (item.secondMenu) {
+			menu = item.secondMenu.map((itemSub) => {
+				return <li key={itemSub.id}><a
+					href={`./${this.getUrl(itemSub.label)}`}>{itemSub.label}</a></li>
 			})
 		}
 		return (
 			<li onClick={this.handleClick}>
-				<a href={url}>{item.label}</a>
+				<a href={`./${this.getUrl(item.label)}`}>{item.label}</a>
 				<ul
 					ref={(node) => this.node = node}
-					className={this.state.show}
-					style={this.state.setStyle}>
+					className={this.state.show ? 'show': 'hidden'}
+					style={this.state.subMenuStyle}>
 					{menu}
 				</ul>
 			</li>
@@ -139,4 +127,6 @@ class Link extends Component {
 }
 
 export default Link;
+
+
 

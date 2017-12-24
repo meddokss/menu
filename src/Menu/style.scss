@@ -20,6 +20,8 @@ $demi-bold: 700;
 	}
 	li{
 		position:relative;
+		//min-width: 125px;
+		text-align: center;
 
 		a{
 			text-decoration:none;
@@ -59,11 +61,13 @@ $demi-bold: 700;
 	
 	.hidden{
 		opacity:0;
-		display:none;
+		//display:none;
+		visibility:hidden;
 	}
 	.show{
 		opacity:1;
-		display:block;
+		//display:block;
+		visibility:visible;
 	}
 	li ul{
 		display:block;

@@ -12,7 +12,8 @@
     display: flex;
     position: relative; }
   .main_menu li {
-    position: relative; }
+    position: relative;
+    text-align: center; }
     .main_menu li a {
       text-decoration: none;
       color: #282828;
@@ -43,10 +44,10 @@
       left: 0; }
   .main_menu .hidden {
     opacity: 0;
-    display: none; }
+    visibility: hidden; }
   .main_menu .show {
     opacity: 1;
-    display: block; }
+    visibility: visible; }
   .main_menu li ul {
     display: block;
     position: absolute;
