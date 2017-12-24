@@ -13,7 +13,9 @@
 
 Мои комментарии:<br>
 Проверка:<br>
-Перемещение пункта меню по горизонтали для проверки задаю свойству align-items : flex-end, center, flex-start;<br>
+
+Перемещение пункта меню по горизонтали для проверки <br>
+В файле App.scss для класса App задаю свойству align-items : flex-end, center, flex-start;<br>
 .App {
     align-items: center;
 }<br>
