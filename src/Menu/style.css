@@ -1,0 +1,73 @@
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.main_menu {
+  position: relative;
+  display: flex;
+  justify-content: center; }
+  .main_menu ul {
+    display: flex;
+    position: relative; }
+  .main_menu li {
+    position: relative; }
+    .main_menu li a {
+      text-decoration: none;
+      color: #282828;
+      padding: 11px 26px;
+      font-size: 16px;
+      font-family: "Avenir Next";
+      font-weight: 700;
+      position: relative;
+      display: block; }
+    .main_menu li:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      right: 50%;
+      height: 4px;
+      width: 0;
+      border-bottom: 5px solid #282828;
+      -webkit-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      -moz-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      -ms-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      -o-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+    .main_menu li:not(.active):hover > a {
+      color: #F30000; }
+    .main_menu li:not(.active):hover:before {
+      width: 100%;
+      left: 0; }
+  .main_menu .hidden {
+    opacity: 0;
+    display: none; }
+  .main_menu .show {
+    opacity: 1;
+    display: block; }
+  .main_menu li ul {
+    display: block;
+    position: absolute;
+    color: #FFF;
+    width: 100%; }
+  .main_menu li li {
+    background-color: #282828;
+    width: 100%;
+    color: #FFF;
+    text-align: center; }
+    .main_menu li li a {
+      color: #FFF; }
+    .main_menu li li:before {
+      display: none; }
+  .main_menu li > ul li a {
+    color: #FFF; }
+  .main_menu li:hover li a:hover {
+    background-color: #4E4E4E;
+    color: #FFF;
+    font-family: "Avenir Next";
+    font-size: 16px;
+    font-weight: 700; }
+  .main_menu li > li {
+    background-color: #4E4E4E; }
