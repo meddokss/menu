@@ -31,8 +31,8 @@
 
 
 
-Запуск проекта: 
-'npm install'
+Установка пакетов: 
+`npm install`
 
 In the project directory, you can run:
 
